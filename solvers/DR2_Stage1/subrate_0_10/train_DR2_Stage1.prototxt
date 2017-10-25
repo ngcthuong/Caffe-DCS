@@ -1,0 +1,63 @@
+layer {
+  name: "data"
+  type: "HDF5Data"
+  top: "data"
+  top: "label"
+  include {
+    phase: TRAIN
+  }
+  hdf5_data_param {
+    source: "../../../data/CS_Meas/hdf5_org/Train_r0.1_1089.txt"
+    batch_size: 128
+  }
+}
+layer {
+  name: "fc1"
+  type: "Convolution"
+  bottom: "data"
+  top: "fc1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1089
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.05
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "reshape"
+  type: "Reshape"
+  bottom: "fc1"
+  top: "reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 1
+      dim: 33
+      dim: 33
+    }
+  }
+}
+layer {
+  name: "loss"
+  type: "EuclideanLoss"
+  bottom: "reshape"
+  bottom: "label"
+  top: "loss"
+  loss_weight: 1
+}

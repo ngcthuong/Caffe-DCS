@@ -1,0 +1,6 @@
+         baby_GT.bmp: PSNR =  26.87 dB, SSIM =  0.584 , Time = 0.010681  seconds
+         bird_GT.bmp: PSNR =  28.86 dB, SSIM =  0.775 , Time = 0.005601  seconds
+    butterfly_GT.bmp: PSNR =  22.46 dB, SSIM =  0.644 , Time = 0.004639  seconds
+         head_GT.bmp: PSNR =  28.29 dB, SSIM =  0.676 , Time = 0.003927  seconds
+        woman_GT.bmp: PSNR =  25.30 dB, SSIM =  0.646 , Time = 0.005151  seconds
+             Average: PSNR =  26.36 dB, SSIM =  0.665 , Time = 0.002727  seconds
